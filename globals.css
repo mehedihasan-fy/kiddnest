@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-kn-bg: #F5F8FC;
+  --color-kn-surface: #FFFFFF;
+  --color-kn-border: #E4ECF4;
+  --color-kn-ink: #2E3A4D;
+  --color-kn-muted: #7B8AA0;
+  --color-kn-coral: #F28482;
+  --color-kn-coral-deep: #E56E6C;
+  --color-kn-sky: #6FA8DC;
+  --color-kn-sky-deep: #4F8BC4;
+  --color-kn-giraffe: #F4A261;
+  --color-kn-koala: #8FBC9B;
+  --color-kn-pigpink: #F8C8DC;
+}
+
+@layer base {
+  html, body {
+    background-color: #F5F8FC;
+    color: #2E3A4D;
+  }
+
+  body {
+    font-family: 'Nunito', 'Quicksand', 'Noto Sans Bengali', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  input, select, textarea { outline: none; }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: #F28482;
+    box-shadow: 0 0 0 4px rgba(242, 132, 130, 0.15);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-kn-coral text-white px-4 py-2 rounded-xl hover:bg-kn-coral-deep transition-all font-bold text-sm inline-flex items-center gap-2 shadow-md shadow-kn-coral/25 hover:shadow-lg hover:shadow-kn-coral/30 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-kn-ink px-4 py-2 rounded-xl border border-kn-border hover:border-kn-sky hover:text-kn-sky-deep transition-all font-bold text-sm inline-flex items-center gap-2 hover:-translate-y-0.5;
+  }
+
+  .btn-danger {
+    @apply bg-[#C0392B] text-white px-4 py-2 rounded-xl hover:bg-[#A93226] transition-all font-bold text-sm inline-flex items-center gap-2;
+  }
+
+  .btn-success {
+    @apply bg-kn-koala text-white px-4 py-2 rounded-xl hover:bg-[#79A988] transition-all font-bold text-sm inline-flex items-center gap-2;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-[0_1px_2px_rgba(46,58,77,0.04),0_4px_16px_rgba(46,58,77,0.04)] border border-kn-border p-6 transition-all hover:shadow-[0_2px_4px_rgba(46,58,77,0.06),0_8px_24px_rgba(46,58,77,0.06)];
+  }
+
+  .input-field {
+    @apply w-full px-3 py-2 border border-kn-border rounded-xl text-sm transition-all bg-white text-kn-ink placeholder:text-kn-muted/70;
+  }
+
+  .table-header {
+    @apply px-4 py-3 text-left text-[11px] font-extrabold text-kn-muted uppercase tracking-[0.08em];
+  }
+
+  .table-cell {
+    @apply px-4 py-3 text-sm text-kn-ink;
+  }
+
+  .status-badge {
+    @apply px-2.5 py-0.5 rounded-full text-xs font-bold;
+  }
+}
+
+@layer utilities {
+  .animate-float-slow {
+    animation: kn-float 12s ease-in-out infinite;
+  }
+  .animate-float-slower {
+    animation: kn-float 18s ease-in-out infinite;
+  }
+  @keyframes kn-float {
+    0%, 100% { transform: translate3d(0,0,0) scale(1); }
+    50%      { transform: translate3d(0,-18px,0) scale(1.04); }
+  }
+}
