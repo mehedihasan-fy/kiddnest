@@ -4,7 +4,11 @@ import { Pool } from "pg";
 const databaseUrl = process.env.DATABASE_URL;
 
 if (!databaseUrl) {
-  throw new Error("DATABASE_URL is required");
+  if (process.env.NEXT_PHASE === "phase-production-build") {
+    console.warn("Warning: DATABASE_URL is not set during next build.");
+  } else {
+    throw new Error("DATABASE_URL is required");
+  }
 }
 
 const globalForDb = globalThis as typeof globalThis & {
